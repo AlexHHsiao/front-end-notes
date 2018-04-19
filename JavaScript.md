@@ -64,7 +64,7 @@ function resizeHandler(e) {
   console.log('resize');
 }
 
-// using timestamp
+// using timestamp, will execute immediately when event begain to happen, and will not execute after last event trigger  
 function throttle(fn, delay) {
   let pre = Date.now();
 
@@ -76,6 +76,23 @@ function throttle(fn, delay) {
     if (now - pre >= delay) {
       fn.apply(context, args);
       pre = Date.now();
+    }
+  }
+}
+
+// using timmer, will not execute when event happen first time, until delay time, and will execute after last event trigger ends
+function throttle(fn, delay) {
+  let timer = null;
+
+  return function() {
+    let context = this;
+    let args = arguments;
+
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(context, args);
+        timer = null;
+      }, delay);
     }
   }
 }
