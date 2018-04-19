@@ -2,7 +2,8 @@
 
 > ### Debounce and Throttle
 Refs: [数组扁平化， 柯里化，防抖， 节流，对象拷贝](https://github.com/lensh/blog/issues/1)
-场景： 当一个敲击可以立马搜索的输入框， 当用户一直在敲击键盘， debounce 是在用户停止输入后，并且delay时间内没有再输入，那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。
+
+场景： 当一个敲击可以立马搜索的输入框, 当用户一直在敲击键盘, debounce 是在用户停止输入后, 并且delay时间内没有再输入, 那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。
 
 **Debounce**: only execute _**once**_ after an event stop after a certain delay time, the execute step can happen when event begin or stop.
 
