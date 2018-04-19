@@ -1,6 +1,8 @@
 # [:arrow_left:](https://github.com/HuanxinHu/front-end-notes/blob/master/README.md) JavaScript
 
 > ### Debounce and Throttle
+场景： 当一个敲击可以立马搜索的输入框， 当用户一直在敲击键盘， debounce 是在用户停止输入后，并且delay时间内没有再输入，那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。
+
 **Debounce**: only execute _**once**_ after an event stop after a certain delay time, the execute step can happen when event begin or stop.
 
 ```javascript
@@ -51,4 +53,28 @@ function debounce(fn, delay, immediate) {
   }
 }
 ```
-**Throttle**: 
+**Throttle**: when event happening, execute handler every delay time.
+
+```javascript
+window.addEventListener('resize', throttle(resizeHandler, 2000));
+
+function resizeHandler(e) {
+  console.log('resize');
+}
+
+// using timestamp
+function throttle(fn, delay) {
+  let pre = Date.now();
+
+  return function() {
+    let context = this;
+    let args = arguments;
+    let now = Date.now();
+    
+    if (now - pre >= delay) {
+      fn.apply(context, args);
+      pre = Date.now();
+    }
+  }
+}
+```
