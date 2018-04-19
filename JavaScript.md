@@ -1,6 +1,6 @@
 # [:arrow_left:](https://github.com/HuanxinHu/front-end-notes/blob/master/README.md) JavaScript
 
-> #### Debounce and Throttle
+> ### Debounce and Throttle
 **Debounce**: only execute _**once**_ after an event stop after a certain delay time, the execute step can happen when event begin or stop.
 
 ```javascript
