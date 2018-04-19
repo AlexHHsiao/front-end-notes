@@ -4,6 +4,6 @@
 
 [CSS](https://github.com/HuanxinHu/front-end-notes/blob/master/CSS.md)
 
-[JavaScript](https://github.com/HuanxinHu/front-end-notes/blob/master/JavaScript.mdm)
+[JavaScript](https://github.com/HuanxinHu/front-end-notes/blob/master/JavaScript.md)
 
 [Web and Browser](https://github.com/HuanxinHu/front-end-notes/blob/master/Web%20and%20Browser.md)
