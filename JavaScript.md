@@ -145,8 +145,22 @@ curried(1)(2)(3)
 > ### Deep Copy
 
 ```javascript
-// Object.prototype.toString.call()
+// Object.prototype.toString.call(1), [object Number]
 function clone(value) {
-
+  if(Array.isArray(value)) {
+    let res = [];
+    for (let i = 0; i < value.length; i++) {
+      res.push(clone(value[i]));
+    }
+    return res;
+  } else if (Object.prototype.toString.call(value) === '[object Object]') {
+    let res = {};
+    Object.keys(value).forEach(key => {
+      res[key] = clone(value[key]);
+    });
+    return res;
+  } else {
+    return value;
+  }
 }
 ```
