@@ -135,10 +135,10 @@ function curry(func) {
   }
 }
 
-var f = function(a,b,c) {
+const f = function(a,b,c) {
   return console.log([a,b,c])
 }
-var curried = curry(f);
+const curried = curry(f);
 curried(1)(2)(3)
 ```
 
@@ -147,7 +147,7 @@ curried(1)(2)(3)
 ```javascript
 // Object.prototype.toString.call(1), [object Number]
 function clone(value) {
-  if(Array.isArray(value)) {
+  if (Array.isArray(value)) {
     let res = [];
     for (let i = 0; i < value.length; i++) {
       res.push(clone(value[i]));
@@ -163,4 +163,20 @@ function clone(value) {
     return value;
   }
 }
+
+let obj1 = {
+  a: 1,
+  b: [1,3],
+  c: {
+    m: 1,
+    n: [1,2],
+    p: {
+      q: 1
+    }
+  }
+};
+
+let obj2 = clone(obj1);
+obj1.c.p = [1,2];
+console.log(obj2.c.p);
 ```
