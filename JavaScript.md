@@ -141,3 +141,12 @@ var f = function(a,b,c) {
 var curried = curry(f);
 curried(1)(2)(3)
 ```
+
+> ### Deep Copy
+
+```javascript
+// Object.prototype.toString.call()
+function clone(value) {
+
+}
+```
