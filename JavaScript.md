@@ -97,3 +97,47 @@ function throttle(fn, delay) {
   }
 }
 ```
+
+> ### Array Flatten
+
+```javascript
+function flatten(array) {
+  let res = [];
+  for(let i = 0; i < array.length; i++){
+    let item = array[i];
+    if (Array.isArray(item)) {
+      res.push(...flatten(item));
+    } else {
+      res.push(item);
+    }
+  }
+  return res;
+}
+
+console.log(flatten([1,2,[3,4],[5,[6,[7,[8], 9]]]]));
+```
+
+> ### Curry
+
+```javascript
+function curry(func) {
+  let l = func.length // Function.length return argumens length function expected
+  return function curried() {
+    let args = Array.from(arguments);
+    if (args.length < l) {
+      return function() {
+        let argsInner = Array.from(arguments);
+        return curried.apply(this, [...args, ...argsInner]);
+      }
+    } else {
+      func.apply(this, args);
+    }
+  }
+}
+
+var f = function(a,b,c) {
+  return console.log([a,b,c])
+}
+var curried = curry(f);
+curried(1)(2)(3)
+```
