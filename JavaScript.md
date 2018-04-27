@@ -1,6 +1,7 @@
 # [:arrow_left:](https://github.com/HuanxinHu/front-end-notes/blob/master/README.md) JavaScript
 
 > ### Debounce and Throttle
+
 Refs: [Array flatten, Currying, Debounce, throttle, deepCopy.](https://github.com/lensh/blog/issues/1)
 
 场景： 当一个敲击可以立马搜索的输入框, 当用户一直在敲击键盘, debounce 是在用户停止输入后, 并且delay时间内没有再输入, 那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。
@@ -200,4 +201,21 @@ const res = arr.reduce((list, num) => {
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 const sum = arr.reduce((acc, num) => acc+num, 0);
+```
+
+> ### React
+**[props vs state](https://www.jianshu.com/p/841a8b6eab46)**
+```
+UI = Component(props, state)
+
+props is the component's interface for external
+state is the component's interface for internal
+
+state:
+  1. can not be changed directly, must use setState()
+  2. state update is async
+  3. state update is a shallow merger process  
+
+props:
+  2. props can not be changed
 ```
