@@ -180,3 +180,24 @@ let obj2 = clone(obj1);
 obj1.c.p = [1,2];
 console.log(obj2.c.p);
 ```
+
+> ### Array.reduce(accumulator, currentValue, currentIndex, array)
+**reduce -> map + filter**
+
+```javascript
+// double array element, and return the values grater than 5
+const arr = [1, 2, 3, 4];
+const res = arr.reduce((list, num) => {
+  num = num*2;
+  if (num > 5) {
+    list.push(num);
+  }
+  return list;
+}, [])
+```
+**reduce -> array sum**
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+const sum = arr.reduce((acc, num) => acc+num, 0);
+```
