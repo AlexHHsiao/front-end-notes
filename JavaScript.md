@@ -1,10 +1,10 @@
 # [:arrow_left:](https://github.com/HuanxinHu/front-end-notes/blob/master/README.md) JavaScript
 
-> ### Debounce and Throttle
-
 Refs: [Array flatten, Currying, Debounce, throttle, deepCopy.](https://github.com/lensh/blog/issues/1)
 
-场景： 当一个敲击可以立马搜索的输入框, 当用户一直在敲击键盘, debounce 是在用户停止输入后, 并且delay时间内没有再输入, 那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。
+> ### Debounce and Throttle
+
+场景： 当一个敲击可以立马搜索的输入框, 当用户一直在敲击键盘, debounce 是在用户停止输入后, 并且delay时间内没有再输入, 那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。按照中文的意思也好理解，防抖和节流，参考他们的timer写法，非常相似。
 
 **Debounce**: only execute _**once**_ after an event stop after a certain delay time, the execute step can happen when event begin or stop.
 
