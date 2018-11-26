@@ -1,5 +1,10 @@
 ###1. Flatten Array (recursively and iteratively)
+```
+This array can have multiple types: {}, [], "", undefined, null, 123 are all valid types inside the array.  
+```
+
 ###2. Explain Promise
+
 ###3. Code Exericse
 ```
 Given input:
@@ -49,4 +54,23 @@ emitter.emit('event_name', foo, bar);
 sub.release(); // `sub` is the reference returned by `subscribe` above
 
 */  
+```
+###6. Poll widget
+```
+Poll Widget question (just know your positioning, relative, static etc know the differences inside out). You might want to know specificity as well.  
+```
+###7. Code exercise
+```
+Given a grid of characters output a decoded message. The message for the following would be IROCKA. (diagonally down right and diagonally up right if you can't go further .. you continue doing this)
+
+I B C A L K A
+D R F C A E A
+G H O E L A D  
+```
+
+###8. Design
+```
+Given a picture, how would you hide/show a child picture on hovering on this parent?
+How would you ensure clicking on this picture would go to a specific link?  
+How would you ensure the child is positioned in the top right of the parent picture?  
 ```
