@@ -1,14 +1,12 @@
 # [:arrow_left:](https://github.com/HuanxinHu/front-end-notes/blob/master/README.md) JavaScript
 
-Refs: [Array flatten, Currying, Debounce, throttle, deepCopy.](https://github.com/lensh/blog/issues/1)
-
-> ### Debounce and Throttle
+## Debounce and Throttle
 
 场景： 当一个敲击可以立马搜索的输入框, 当用户一直在敲击键盘, debounce 是在用户停止输入后, 并且delay时间内没有再输入, 那么执行一次搜索。throttle 是每隔delay时间便执行一次搜索。按照中文的意思也好理解，防抖和节流，参考他们的timer写法，非常相似。
-
 **Debounce**: only execute _**once**_ after an event stop after a certain delay time, the execute step can happen when event begin or stop.
 
-```javascript
+
+```js
 window.addEventListener('resize', debounce(resizeHandler, 2000));
 
 function resizeHandler(e) {
@@ -58,14 +56,15 @@ function debounce(fn, delay, immediate) {
 ```
 **Throttle**: when event happening, execute handler every delay time.
 
-```javascript
+```js
 window.addEventListener('resize', throttle(resizeHandler, 2000));
 
 function resizeHandler(e) {
   console.log('resize');
 }
 
-// using timestamp, will execute immediately when event begain to happen, and will not execute after last event trigger  
+// using timestamp, will execute immediately when event begain to happen, 
+// and will not execute after last event trigger  
 function throttle(fn, delay) {
   let pre = Date.now();
 
@@ -81,7 +80,8 @@ function throttle(fn, delay) {
   }
 }
 
-// using timmer, will not execute when event happen first time, until delay time, and will execute after last event trigger ends
+// using timmer, will not execute when event happen first time, 
+// until delay time, and will execute after last event trigger ends
 function throttle(fn, delay) {
   let timer = null;
 
@@ -99,9 +99,9 @@ function throttle(fn, delay) {
 }
 ```
 
-> ### Array Flatten
+## Array Flatten
 
-```javascript
+```js
 function flatten(array) {
   let res = [];
   for(let i = 0; i < array.length; i++){
@@ -118,9 +118,9 @@ function flatten(array) {
 console.log(flatten([1,2,[3,4],[5,[6,[7,[8], 9]]]]));
 ```
 
-> ### Curry
+## Curry
 
-```javascript
+```js
 function curry(func) {
   let l = func.length // Function.length return argumens length function expected
   return function curried() {
@@ -143,9 +143,9 @@ const curried = curry(f);
 curried(1)(2)(3)
 ```
 
-> ### Deep Copy
+## Deep Copy
 
-```javascript
+```js
 // Object.prototype.toString.call(1), [object Number]
 function clone(value) {
   if (Array.isArray(value)) {
@@ -182,10 +182,13 @@ obj1.c.p = [1,2];
 console.log(obj2.c.p);
 ```
 
-> ### Array.reduce(accumulator, currentValue, currentIndex, array)
+## Array.reduce
+```js
+Array.reduce(accumulator, currentValue, currentIndex, array)
+```
 **reduce -> map + filter**
 
-```javascript
+```js
 // double array element, and return the values grater than 5
 const arr = [1, 2, 3, 4];
 const res = arr.reduce((list, num) => {
@@ -203,7 +206,14 @@ const arr = [1, 2, 3, 4, 5];
 const sum = arr.reduce((acc, num) => acc+num, 0);
 ```
 
-> ### React
+## Promise
+```js
+// your simple custom promise
+function CustomPromise(resolve, reject) {
+  
+}
+```
+## React topics
 **[props vs state](https://www.jianshu.com/p/841a8b6eab46)**
 ```
 UI = Component(props, state)
