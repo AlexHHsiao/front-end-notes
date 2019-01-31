@@ -207,24 +207,32 @@ const sum = arr.reduce((acc, num) => acc+num, 0);
 ## Promise
 ```js
 // your simple custom promise
+// ref https://segmentfault.com/a/1190000015047009
 var p = new CustomPromise((resolve, reject) => {
   setTimeout(() => {
-    resolve('A')
+    reject('error') // resolve('success')
   }, 2000)
 })
 
-p.then(res => {console.log(res)});
+p.then(res => {console.log('resolve' ,res)}).catch(err => console.log('reject', err));
 
 function CustomPromise (fn) {
   var that = this;
 
   this.then = function(cb) {
     that.cb = cb;
+    return that;
   }
   this.resolve = function(data) {
     that.cb(data)
   }
-  fn(this.resolve);
+  this.catch = function(errCb) {
+    that.errCb = errCb;
+  }
+  this.reject = function(err) {
+    that.errCb(err)
+  }
+  fn(this.resolve, this.reject);
 }
 ```
 ## React topics
