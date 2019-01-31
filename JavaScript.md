@@ -207,8 +207,24 @@ const sum = arr.reduce((acc, num) => acc+num, 0);
 ## Promise
 ```js
 // your simple custom promise
-function CustomPromise(resolve, reject) {
-  
+var p = new CustomPromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('A')
+  }, 2000)
+})
+
+p.then(res => {console.log(res)});
+
+function CustomPromise (fn) {
+  var that = this;
+
+  this.then = function(cb) {
+    that.cb = cb;
+  }
+  this.resolve = function(data) {
+    that.cb(data)
+  }
+  fn(this.resolve);
 }
 ```
 ## React topics
