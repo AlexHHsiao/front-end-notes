@@ -251,3 +251,60 @@ state:
 props:
   2. props can not be changed
 ```
+
+## Promise
+
+```js
+let fetch1 = (arg, sc, ec) => {
+  setTimeout(() => {
+    sc('success1 ' + arg);
+  });
+}
+
+let fetch2 = (arg, sc, ec) => {
+  setTimeout(() => {
+    ec('success2 ' + arg);
+  });
+}
+
+let fetch3 = (arg, sc, ec) => {
+  setTimeout(() => {
+    sc('success3 ' + arg);
+  });
+}
+
+const mergeFetcher = (list) => {
+  return async function(arg, callback) {
+    const fetchList = list.map(val => {
+      return new Promise((resolve, reject) => {
+        val(arg, resolve, reject);
+      });
+    });
+    
+    
+//     Promise.all(fetchList).then(val => callback(val)).catch((err) => {
+//       callback(err)
+//     });
+    
+    let result = [];
+    
+    for (let val of fetchList) {
+      try {
+        let res = await val;
+        result.push(res);
+      } catch(e) {
+        result.push(e)
+      }
+    }
+    
+    callback(result)
+  };
+};
+
+const merged = mergeFetcher([fetch1, fetch2, fetch3]);
+ 
+merged('a', (val) => {
+  console.log(val)
+}); //callback called with all result combined.
+
+```
