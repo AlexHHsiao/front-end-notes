@@ -308,3 +308,47 @@ merged('a', (val) => {
 }); //callback called with all result combined.
 
 ```
+
+## Implement my own promise
+
+```
+function AlexPromise(input) {
+  this.func = input;
+  this.error = null;
+}
+
+
+
+AlexPromise.prototype.then = function(_callback) {
+  this.func((successData) => {
+    _callback(successData);
+  }, (rejectData) => {
+    this.error = rejectData;
+  });
+  
+  return this;
+}
+
+AlexPromise.prototype.catch = function(_callback) {
+  let interval = setInterval(() => {
+    if (this.error) {
+      clearInterval(interval);
+      _callback(this.error)
+    }
+  });
+}
+
+let promise = new AlexPromise((resolve, reject) => {
+  setTimeout(() => {
+    reject('Hi');
+  }, 1000);
+});
+
+
+promise.then((data) => {
+  console.log(data, 'success here')
+}).catch((err) => {
+  console.log(err, 'error here');
+});
+
+```
