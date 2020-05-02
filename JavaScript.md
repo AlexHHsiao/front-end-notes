@@ -311,7 +311,7 @@ merged('a', (val) => {
 
 ## Implement my own promise
 
-```
+```js
 function AlexPromise(input) {
   this.func = input;
   this.error = null;
